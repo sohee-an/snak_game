@@ -1,18 +1,30 @@
 import { Vector } from "matter";
 import { Actor } from "./actor";
+import { Food } from "./food";
 import { ImageNames_AutoPreLoad } from "./game";
 import { GameManager } from "./gameManager";
+import { PlayerBody } from "./playerBody";
 
 // 플레이어는 무엇인가?
 export class Player extends Actor {
-  // 구현해야 할 기능들
+  myBodys: Array<PlayerBody> = new Array<PlayerBody>();
+
+  onEatFood(food: Food) {
+    // 플레이어가 먹은 food
+    // 필요한 정보가 다 있음.
+    const playerBody = GameManager.instance.createActor(PlayerBody);
+    this.myBodys.push(playerBody);
+
+    playerBody.Init(this, this.myBodys.length);
+  }
+
   // 이동가능하다.
   // 아이템을 먹으면 꼬리가 늘어난다.
 
   // 다른 유저랑 부딛히면 죽는다.
   // 자기 몸이 부딛히면 죽는다.
 
-  // 쉬운거 어려운거 따로 분리하자
+  // 쉬운것 부터 하는게 정석임
 
   //-------
   //이동의 특징
@@ -24,7 +36,6 @@ export class Player extends Actor {
   // 시작할 때 오른쪽을 먼저 보고 있다.
   cursors: Phaser.Types.Input.Keyboard.CursorKeys;
   playerSpeed: integer = 5;
-  direction: Phaser.Math.Vector2 = new Phaser.Math.Vector2(1, 0);
 
   create() {
     // 플레이어는 게임매니저를 통해서, 이미지와 입력을 얻어옴.

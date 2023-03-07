@@ -10,8 +10,10 @@ export enum ImageNames_AutoPreLoad {
   playerFace = "playerFace",
   food = "food",
   redDot = "redDot",
+  playerBody = "playerBody",
 }
 
+// 게임 을 관리하는 역활을 함.
 export default class MainScene extends Phaser.Scene {
   character: Phaser.GameObjects.Sprite;
   constructor() {
@@ -44,7 +46,14 @@ export default class MainScene extends Phaser.Scene {
     // factory patern
     var player = GameManager.instance.createActor(Player);
     GameManager.instance.mainPlayer = player;
-    GameManager.instance.createActor(Food);
+
+    // make food randomly
+    for (let i = 0; i < 30; i++) {
+      // 반복할 코드
+      const food = GameManager.instance.createActor(Food);
+      const randomPos = GameManager.instance.getRandomPositionByMapSize();
+      food.setPositionByVector(randomPos);
+    }
   }
 
   playerSpeed: integer = 3;
