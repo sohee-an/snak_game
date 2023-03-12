@@ -6,7 +6,8 @@ export class GameManager {
   mapSizeX: number = 1280;
   mapSizeY: number = 720;
 
-  // 싱글톤 패턴이라고 함,
+  // 싱글톤 패턴이라고 함, 많이 쓰이긴하는데 중요하냐고하면
+  // 그냥 너무 당연한거라
   static instance: GameManager;
   static init() {
     GameManager.instance = new GameManager();

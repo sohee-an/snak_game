@@ -18,7 +18,7 @@ export default class MainScene extends Phaser.Scene {
   character: Phaser.GameObjects.Sprite;
   constructor() {
     super("demo");
-    //이미지 로드 기능을 쓰려면, MainScene을 사용해야 되.
+
     GameManager.currentScene = this;
     GameManager.init();
   }
@@ -30,9 +30,9 @@ export default class MainScene extends Phaser.Scene {
     }
 
     //this.load.image('logo', 'assets/phaser3-logo.png');
-    this.load.image("libs", "assets/libs.png");
-    this.load.glsl("bundle", "assets/plasma-bundle.glsl.js");
-    this.load.glsl("stars", "assets/starfields.glsl.js");
+    // this.load.image("libs", "assets/libs.png");
+    // this.load.glsl("bundle", "assets/plasma-bundle.glsl.js");
+    //this.load.glsl("stars", "assets/starfields.glsl.js");
   }
 
   create() {
